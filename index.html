@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
@@ -14,8 +17,14 @@
         <div>
             <p>Select Height Of Bar!</p>
             <div style="margin-bottom: 10px">
-                <input type="number" id="myNumber" value="1" min="1" max="50">
-                <button onclick="addBar()">Create Bar</button>
+                <input type="number" id="myNumber" value="100" min="1" max="50">
+                <button class ="sortButton" onclick="genRandBars()">Create Bar</button>
+            </div>
+            <div style="margin-bottom: 10px">
+                <button class ="sortButton" id ="bubbleSort" onclick="bubbleSort()">Click for BubbleSort!!</button>
+            </div>
+            <div style="margin-bottom: 10px">
+                <button class ="sortButton" id ="insertionSort" onclick="insertionSort()">Click for InsertionSort!!</button>
             </div>
         </div>
     </div>
