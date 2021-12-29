@@ -127,6 +127,33 @@ async function insertionSort(){
     return;
 }
 
+async function selectionSort() {
+    let minIndex;
+    
+    function selectionSwap(i, minIndex){
+        return new Promise(resolve => {
+            setTimeout(() => {
+                let temp = bar[minIndex].style.height;
+                bar[minIndex].style.height = bar[i].style.height;
+                bar[i].style.height = temp;
+
+                resolve('');
+            }, 50);
+        });
+    }
+
+    for (let i = 0; i < bar.length - 1; i++) {
+        minIndex = i;
+        for (let j = i + 1; j < bar.length; j++) {
+            if (getNum(bar[j].style.height) < getNum(bar[minIndex].style.height)) {
+                minIndex = j;
+            }
+        }
+        await selectionSwap(i, minIndex);
+    }
+}
+
+
 // function twosec() {
 //     return new Promise(resolve => {
 //         setTimeout(() => {
