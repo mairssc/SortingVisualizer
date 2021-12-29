@@ -138,7 +138,7 @@ async function selectionSort() {
                 bar[i].style.height = temp;
 
                 resolve('');
-            }, 50);
+            }, 60);
         });
     }
 
