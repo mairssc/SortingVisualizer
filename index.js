@@ -1,7 +1,6 @@
 const bar = document.getElementsByClassName('bar');
 const barHolder = document.getElementById('bar-holder');
 
-
 function createBar(num, units) {
     if (num > 50) {
         num = 50;
@@ -30,9 +29,9 @@ function createBar(num, units) {
     // }
 }
 
-// function getRandomInt(max) {
-//     return Math.floor(Math.random() * max);
-// }
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 function getRandomFloat(max) {
     return Math.random() * max;
@@ -42,6 +41,22 @@ function genRandBars() {
     var num = document.getElementById("myNumber").value;
     for (var i = 0; i < parseInt(num); i++) {
         createBar(getRandomFloat(20), "px");
+    }
+}
+
+function genNumOfBars(num){
+    for (var i = 0; i < parseInt(num); i++) {
+        createBar(getRandomFloat(20), "px");
+    }
+}
+
+function shuffleBars(){
+    let randIndex;
+    for (var i = 0; i < bar.length; i++) {
+        randIndex = getRandomInt(bar.length-1);
+        var hold = bar[i].style.height;
+        bar[i].style.height = bar[randIndex].style.height;
+        bar[randIndex].style.height = hold;
     }
 }
 
@@ -84,6 +99,7 @@ async function bubbleSort() {
 }
 
 async function insertionSort(){
+
     if(bar.length <= 1){
         return;
     }
@@ -128,6 +144,7 @@ async function insertionSort(){
 }
 
 async function selectionSort() {
+
     let minIndex;
     
     function selectionSwap(i, minIndex){

@@ -8,6 +8,14 @@ html, body {
     text-align: center;
 }
 
+h1{
+    font-size: 25px; 
+}
+
+p{
+    font-size: 18px;
+}
+
 #bar-holder {
     margin: auto;
     display: flex;
@@ -36,6 +44,7 @@ html, body {
     align-items: flex-end;
     gap: 2px;
     border: 3px solid white;
+    width: 100%;
 }
 
 .sortButton{
@@ -46,10 +55,13 @@ html, body {
     color: white;
     height: 28px;
     border-radius: 3px;
+    margin-right: 10px;
 }
 
 #myNumber{
     height: 22px;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
