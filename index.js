@@ -170,6 +170,54 @@ async function selectionSort() {
     }
 }
 
+async function quickSort(left, right) {
+    function swap(i, j) {
+        let temp = bar[j].style.height;
+        bar[j].style.height = bar[i].style.height;
+        bar[i].style.height = temp;
+    }
+
+    function partition(lo, hi) {
+        let pivot = getNum(bar[Math.floor((lo + hi) / 2)].style.height);
+        let i = lo - 1;
+        let j = hi + 1;
+        while (true) {
+            //increment lo until it is greater than or equal to pivot
+            do {
+                i += 1;
+            } while (getNum(bar[i].style.height) < pivot);
+
+            
+            //decrement hi until less or equal to pivot
+            do { 
+                j -= 1;
+            } while (getNum(bar[j].style.height) > pivot);
+
+            //if they crossed, then correct pivot location is at hi
+            //this should be the case where it ends
+            if (i >= j) {
+                return j;
+            }
+
+
+            //Swap hi and lo
+            swap(i, j);
+        }
+    }
+
+
+
+    let pivotIndex;
+    if (left >= 0 && right >= 0 && left < right) {
+        pivotIndex = partition(left, right);
+        quickSort(left, pivotIndex);
+        quickSort(pivotIndex + 1, right);
+    }
+}
+
+
+
+
 
 // function twosec() {
 //     return new Promise(resolve => {
