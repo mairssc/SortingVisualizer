@@ -1,6 +1,7 @@
 const bar = document.getElementsByClassName('bar');
 const barHolder = document.getElementById('bar-holder');
 const max = 900;
+const ratio = 900/1920;
 
 function createBar(num, units) {
     if (num > 50) {
@@ -46,7 +47,8 @@ function genRandBars() {
 }
 
 function genNumOfBars(num){
-    if (bar.length >= max) {
+    //checks if over ratio for window
+    if (bar.length/Number(window.innerWidth) >= ratio) {
         return;
     }
     for (var i = 0; i < parseInt(num); i++) {
@@ -55,7 +57,8 @@ function genNumOfBars(num){
 }
 
 function genMaxNumOfBars(){
-    while (bar.length < max) {
+    //while not over designated ratio variable
+    while (bar.length/Number(window.innerWidth) < ratio) {
         createBar(getRandomFloat(20), "px");
     }
 }
