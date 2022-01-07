@@ -1,5 +1,6 @@
 const bar = document.getElementsByClassName('bar');
 const barHolder = document.getElementById('bar-holder');
+const max = 900;
 
 function createBar(num, units) {
     if (num > 50) {
@@ -45,7 +46,16 @@ function genRandBars() {
 }
 
 function genNumOfBars(num){
+    if (bar.length >= max) {
+        return;
+    }
     for (var i = 0; i < parseInt(num); i++) {
+        createBar(getRandomFloat(20), "px");
+    }
+}
+
+function genMaxNumOfBars(){
+    while (bar.length < max) {
         createBar(getRandomFloat(20), "px");
     }
 }
@@ -172,15 +182,23 @@ async function selectionSort() {
 
 async function quickSort(left, right) {
     function swap(i, j) {
-        let temp = bar[j].style.height;
-        bar[j].style.height = bar[i].style.height;
-        bar[i].style.height = temp;
+        return new Promise(resolve => {
+            setTimeout(() => {
+                let temp = bar[j].style.height;
+                bar[j].style.height = bar[i].style.height;
+                bar[i].style.height = temp;
+
+                resolve('');
+            }, 1);
+        });
+
     }
 
-    function partition(lo, hi) {
-        let pivot = getNum(bar[Math.floor((lo + hi) / 2)].style.height);
-        let i = lo - 1;
-        let j = hi + 1;
+    let pivotIndex;
+    if (left >= 0 && right >= 0 && left < right) {
+        let pivot = getNum(bar[Math.floor((left + right) / 2)].style.height);
+        let i = left - 1;
+        let j = right + 1;
         while (true) {
             //increment lo until it is greater than or equal to pivot
             do {
@@ -196,22 +214,18 @@ async function quickSort(left, right) {
             //if they crossed, then correct pivot location is at hi
             //this should be the case where it ends
             if (i >= j) {
-                return j;
+                break;
             }
 
 
             //Swap hi and lo
-            swap(i, j);
+            await swap(i, j);
         }
-    }
 
 
-
-    let pivotIndex;
-    if (left >= 0 && right >= 0 && left < right) {
-        pivotIndex = partition(left, right);
-        quickSort(left, pivotIndex);
-        quickSort(pivotIndex + 1, right);
+        pivotIndex = j;
+        await quickSort(left, pivotIndex);
+        await quickSort(pivotIndex + 1, right);
     }
 }
 
