@@ -32,7 +32,7 @@ function createBar(num, units) {
 }
 
 function getRandomInt(max) {
-    return Math.(Math.random() * max);
+    return Math.floor(Math.random() * max);
 }
 
 function getRandomFloat(max) {
