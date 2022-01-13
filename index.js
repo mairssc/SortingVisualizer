@@ -32,7 +32,7 @@ function createBar(num, units) {
 }
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+    return Math.(Math.random() * max);
 }
 
 function getRandomFloat(max) {
@@ -233,7 +233,55 @@ async function quickSort(left, right) {
 }
 
 
+async function mergeSort(left, right){
+    function merge(leftArr, alphaLeft, alphaRight, rightArr, betaLeft, betaRight) {
+        //have two pointers, one for start of left, other for start of right
+        // let i = 0;
+        // let j = 0;
+        // let temp = [];
+        // //take min of two pointers and add to temp list
+        // while(i < leftArr.length && j < rightArr.length){
+        //     if(leftArr[i].style.height < rightArr[j].style.height){
+        //         temp.push(leftArr[i]);
+                   
+        //         i++;
+        //     } else {
+        //         temp.push(rightArr[j]);
+        //         j++;
+        //     }
+        // }
+        
+        // if(i == leftArr.length){
+        //     for(var k = j; k < rightArr.length; k++){
+        //         temp.push(rightArr[k]);
+        //     }
+        // } else {
+        //     for(var k = i; k < leftArr.length; k++){
+        //         temp.push(leftArr[k]);
+        //     }
+        // }
+        // //move forward pointer that was used
+        // //once one of the pointers has reached the "end" add all of the other list to 
+        // //the temp list
+        // //return temp list
+        // return temp;
 
+        //https://www.geeksforgeeks.org/in-place-merge-sort/
+
+    }
+
+    //RECURSION ??
+    //find midpoint
+    if (left < right) { 
+        var midpoint = Math.floor((left + right) / 2)
+        //establish left and right
+
+        mergeSort(left, midpoint);
+        mergeSort(midpoint + 1, right);
+
+        merge(left, midpoint, right);
+    }
+}
 
 
 // function twosec() {
