@@ -3,6 +3,14 @@ const barHolder = document.getElementById('bar-holder');
 const max = 900;
 const ratio = 900/1920;
 
+function clearBars() {
+    while (bar[0]) {
+        bar[0].parentNode.removeChild(bar[0])
+    }
+}
+
+
+
 function createBar(num, units) {
     if (num > 50) {
         num = 50;
@@ -14,7 +22,6 @@ function createBar(num, units) {
     }
     num = parseFloat(num);
     if (num == NaN) {
-        console.log('DUMBASS');
         return;
     }
     num += 15;
