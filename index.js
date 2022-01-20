@@ -241,6 +241,7 @@ async function quickSort(left, right) {
 
 
 async function mergeSort(left, right){
+    console.log('hi');
     function pseudoSwap(start1, curS2Val) {
         return new Promise(resolve => {
             setTimeout(() => {
