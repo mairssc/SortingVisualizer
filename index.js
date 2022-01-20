@@ -241,40 +241,47 @@ async function quickSort(left, right) {
 
 
 async function mergeSort(left, right){
-    function merge(leftArr, alphaLeft, alphaRight, rightArr, betaLeft, betaRight) {
-        //have two pointers, one for start of left, other for start of right
-        // let i = 0;
-        // let j = 0;
-        // let temp = [];
-        // //take min of two pointers and add to temp list
-        // while(i < leftArr.length && j < rightArr.length){
-        //     if(leftArr[i].style.height < rightArr[j].style.height){
-        //         temp.push(leftArr[i]);
-                   
-        //         i++;
-        //     } else {
-        //         temp.push(rightArr[j]);
-        //         j++;
-        //     }
-        // }
-        
-        // if(i == leftArr.length){
-        //     for(var k = j; k < rightArr.length; k++){
-        //         temp.push(rightArr[k]);
-        //     }
-        // } else {
-        //     for(var k = i; k < leftArr.length; k++){
-        //         temp.push(leftArr[k]);
-        //     }
-        // }
-        // //move forward pointer that was used
-        // //once one of the pointers has reached the "end" add all of the other list to 
-        // //the temp list
-        // //return temp list
-        // return temp;
+    function pseudoSwap(start1, curS2Val) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                bar[start1].style.height = curS2Val;
+                resolve('');
+            }, 1);
+        });   
+    }
+
+
+
+    async function merge(left, midpoint, right) {
 
         //https://www.geeksforgeeks.org/in-place-merge-sort/
 
+        let start2 = midpoint + 1;
+        let start1 = left;
+        
+        if (getNum(bar[midpoint].style.height) <= getNum(bar[start2].style.height)) {
+            return;
+        }
+
+        while (start1 <= midpoint && start2 <= right) {
+            if (getNum(bar[start1].style.height) < getNum(bar[start2].style.height)) {
+                start1++;
+            } else {
+                let holds2 = start2;
+                let curS2Val = bar[start2].style.height;
+
+
+                while (holds2 != start1) {
+                    bar[holds2].style.height = bar[holds2 - 1].style.height;
+                    holds2--;
+                }
+                await pseudoSwap(start1, curS2Val);
+
+                start1++;
+                midpoint++;
+                start2++;
+            }
+        }
     }
 
     //RECURSION ??
@@ -283,10 +290,10 @@ async function mergeSort(left, right){
         var midpoint = Math.floor((left + right) / 2)
         //establish left and right
 
-        mergeSort(left, midpoint);
-        mergeSort(midpoint + 1, right);
+        await mergeSort(left, midpoint);
+        await mergeSort(midpoint + 1, right);
 
-        merge(left, midpoint, right);
+        await merge(left, midpoint, right);
     }
 }
 
