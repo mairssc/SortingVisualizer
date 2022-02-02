@@ -12,6 +12,9 @@ function clearBars() {
 
 
 function createBar(num, units) {
+    if ((bar.length + num)/Number(window.innerWidth) >= ratio) {
+        return;
+    }
     if (num > 50) {
         num = 50;
         document.getElementById("myNumber").value = 50;
