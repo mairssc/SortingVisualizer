@@ -1,7 +1,7 @@
 const bar = document.getElementsByClassName('bar');
 const barHolder = document.getElementById('bar-holder');
 const max = 900;
-const ratio = 900/1920;
+const ratio = 800/1920;
 
 function clearBars() {
     while (bar[0]) {
