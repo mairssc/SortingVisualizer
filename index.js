@@ -24,9 +24,6 @@ function createBar(num, units) {
     if (num == NaN) {
         return;
     }
-    if ((bar.length + num)/Number(window.innerWidth) >= ratio) {
-        return;
-    }
     num += 15;
     num *= 5;
     var curBar = document.createElement('div');
@@ -61,6 +58,9 @@ function genRandBars() {
     if (num < 1) {
         num = 1;
         document.getElementById("myNumber").value = 1;
+    }
+    if ((bar.length + num)/Number(window.innerWidth) >= ratio) {
+        return;
     }
     for (var i = 0; i < parseInt(num); i++) {
         createBar(getRandomFloat(20), "px");
