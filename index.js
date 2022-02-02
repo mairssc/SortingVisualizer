@@ -12,9 +12,6 @@ function clearBars() {
 
 
 function createBar(num, units) {
-    if ((bar.length + num)/Number(window.innerWidth) >= ratio) {
-        return;
-    }
     if (num > 50) {
         num = 50;
         document.getElementById("myNumber").value = 50;
@@ -25,6 +22,9 @@ function createBar(num, units) {
     }
     num = parseFloat(num);
     if (num == NaN) {
+        return;
+    }
+    if ((bar.length + num)/Number(window.innerWidth) >= ratio) {
         return;
     }
     num += 15;
@@ -50,7 +50,18 @@ function getRandomFloat(max) {
 }
 
 function genRandBars() {
-    var num = document.getElementById("myNumber").value;
+    var num = parseInt(document.getElementById("myNumber").value);
+    if (num == NaN) {
+        return;
+    }
+    if (num > 50) {
+        num = 50;
+        document.getElementById("myNumber").value = 50;
+    }
+    if (num < 1) {
+        num = 1;
+        document.getElementById("myNumber").value = 1;
+    }
     for (var i = 0; i < parseInt(num); i++) {
         createBar(getRandomFloat(20), "px");
     }
