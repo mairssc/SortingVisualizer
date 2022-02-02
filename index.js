@@ -55,7 +55,7 @@ function genRandBars() {
 
 function genNumOfBars(num){
     //checks if over ratio for window
-    if (bar.length/Number(window.innerWidth) >= ratio) {
+    if ((bar.length + num)/Number(window.innerWidth) >= ratio) {
         return;
     }
     for (var i = 0; i < parseInt(num); i++) {
