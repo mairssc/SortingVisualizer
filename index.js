@@ -10,10 +10,9 @@ function checker() {
     console.log(ratio);
     if ((bar.length)/Number(window.innerWidth) > ratio) {
         clearBars();
-        genMaxNumOfBars()
+        genMaxNumOfBars();
     }
 }
-
 
 function clearBars() {
     while (bar[0]) {
