@@ -3,6 +3,18 @@ const barHolder = document.getElementById('bar-holder');
 const max = 900;
 const ratio = 800/1920;
 
+setInterval(checker, 100);
+
+function checker() {
+    console.log((bar.length)/Number(window.innerWidth));
+    console.log(ratio);
+    if ((bar.length)/Number(window.innerWidth) > ratio) {
+        clearBars();
+        genMaxNumOfBars()
+    }
+}
+
+
 function clearBars() {
     while (bar[0]) {
         bar[0].parentNode.removeChild(bar[0])
@@ -77,9 +89,9 @@ function genNumOfBars(num){
     }
 }
 
-function genMaxNumOfBars(){
+function genMaxNumOfBars() {
     //while not over designated ratio variable
-    while (bar.length/Number(window.innerWidth) < ratio) {
+    while ((bar.length + 1)/Number(window.innerWidth) < ratio) {
         createBar(getRandomFloat(20), "px");
     }
 }
