@@ -6,8 +6,6 @@ const ratio = 800/1920;
 setInterval(checker, 100);
 
 function checker() {
-    console.log((bar.length)/Number(window.innerWidth));
-    console.log(ratio);
     if ((bar.length)/Number(window.innerWidth) > ratio) {
         clearBars();
         genMaxNumOfBars();
@@ -41,12 +39,6 @@ function createBar(num, units) {
     curBar.className = "bar";
     curBar.style.height = String(num)+units;
     barHolder.appendChild(curBar);
-
-    // var curNum = "";
-    // for (var i = 0; i < bar.length; i++) {
-    //     curNum = bar[i].style.height;
-    //     console.log(curNum.substring(0, curNum.length - 2));
-    // }
 }
 
 function getRandomInt(max) {
@@ -96,6 +88,19 @@ function genMaxNumOfBars() {
 }
 
 function shuffleBars(){
+    // let hold_bar = [];
+    // for (let k = 0; k < bar.length; k++) {
+    //     hold_bar.push(bar[k].cloneNode());
+    // }
+    // clearBars();
+    // setTimeout(()=> null, 100);
+    // let j = 0;
+    // console.log(hold_bar[0]);
+    // while (j < hold_bar.length) {
+    //     barHolder.appendChild(hold_bar[j]);
+    //     j += 1;
+    // }
+    // figure out how to stop call once started
     let randIndex;
     for (var i = 0; i < bar.length; i++) {
         randIndex = getRandomInt(bar.length-1);
@@ -145,7 +150,7 @@ async function bubbleSort() {
 
 async function insertionSort(){
 
-    if(bar.length <= 1){
+    if (bar.length <= 1){
         return;
     }
 
