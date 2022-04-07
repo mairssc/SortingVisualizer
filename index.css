@@ -13,7 +13,7 @@ h1{
 }
 
 p{
-    font-size: 18px;
+    font-size: 24px;
 }
 
 #bar-holder {
@@ -24,7 +24,7 @@ p{
     justify-content: center;
     align-items: flex-end;
     gap: 2px;
-    height: 60%;
+    height: 50%;
     border: 3px solid white;
 }
 
@@ -36,7 +36,6 @@ p{
 }
 
 .buttons {
-    margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -45,17 +44,20 @@ p{
     gap: 2px;
     border: 3px solid white;
     width: 100%;
+    margin: 10px;
 }
 
 .sortButton{
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    border: 1px solid white;
+    border: 2px solid white;
     font-size: 20px;
     background-color: rgb(54 54 56);
     color: white;
-    height: 28px;
-    border-radius: 3px;
+    padding: 5px;
+    border-radius: 5px;
     margin-right: 10px;
+    justify-content: center;
+    margin: 0 5px;
 }
 
 #myNumber{
@@ -64,4 +66,12 @@ p{
     font-size: 20px;
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.buttonRow {
+    margin: 20px;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
