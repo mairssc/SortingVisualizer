@@ -37,6 +37,7 @@ p{
 
 .buttons {
     display: flex;
+    margin: auto;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
@@ -44,7 +45,6 @@ p{
     gap: 2px;
     border: 3px solid white;
     width: 100%;
-    margin: 10px;
 }
 
 .sortButton{
