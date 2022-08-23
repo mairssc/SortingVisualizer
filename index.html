@@ -16,37 +16,34 @@
     <div id="genButtons" class="buttons" style="margin-top: 10px">
         <div>
             <h1>Generate Bars!</h1>
-            <div>
-                <div class="buttonRow">
+            <div style="margin-bottom: 15px">
+                <div style="display: inline">
                     <p>Create<input type="number" id="myNumber" value="1" min="1" max="50">Bars
-                        <button class ="sortButton" onclick="genRandBars()" style="margin-left: 8px">Create</button>
-                        <button class = "sortButton" onclick="shuffleBars()" style="margin-left:10 px">Shuffle Bars</button>
-                        <button class = "sortButton" onclick="clearBars()" style="margin-left:10 px">Clear</button></p>
+                        <button class ="sortButton" onclick="genRandBars()" onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="margin-left: 8px">Create</button>
+                        <button class = "sortButton" onclick="shuffleBars()" onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="margin-left:10 px">Shuffle Bars</button>
+                        <button class = "sortButton" id="clearButton" onclick="clearBars()" onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="margin-left:10 px">Clear</button></p>
                 </div>
-                <div class="buttonRow">
-                    <button class ="sortButton" onclick="genNumOfBars(5)">Create 5 Bars</button>
-                    <button class ="sortButton" onclick="genNumOfBars(10)">Create 10 Bars</button>
-                    <button class ="sortButton" onclick="genNumOfBars(50)">Create 50 Bars</button>
-                    <button class ="sortButton" onclick="genNumOfBars(100)">Create 100 Bars</button>
-                    <button class ="sortButton" onclick="genMaxNumOfBars()">Create Max Bars</button>
-                </div>
+                <button class ="sortButton" onclick="genNumOfBars(5)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Create 5 Bars</button>
+                <button class ="sortButton" onclick="genNumOfBars(10)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Create 10 Bars</button>
+                <button class ="sortButton" onclick="genNumOfBars(50)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Create 50 Bars</button>
+                <button class ="sortButton" onclick="genNumOfBars(100)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Create 100 Bars</button>
+                <button class ="sortButton" onclick="genMaxNumOfBars()" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Create Max Bars</button>
             </div>
         </div>
     </div>
     <div id="sortButtons" class="buttons" style="margin-top: 10px">
         <div>
             <h1>Sort Bars!</h1>
-            <div class="buttonRow">
-                <button class ="sortButton" id ="bubbleSort" onclick="bubbleSort()">BubbleSort</button>
-                <button class ="sortButton" id ="insertionSort" onclick="insertionSort()">Insertion Sort</button>
-                <button class="sortButton" id ="selectionSort" onclick="selectionSort()">Selection Sort</button>
-                <button class="sortButton" id ="quickSort" onclick="quickSort(0, document.getElementsByClassName('bar').length - 1)">Quick Sort</button>
-                <button class="sortButton" id ="mergeSort" onclick="mergeSort(0, document.getElementsByClassName('bar').length - 1)">Merge Sort</button>
+            <div style="margin-bottom: 10px">
+                <button class ="sortButton" id ="bubbleSort" onclick="callBubble()" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Click for BubbleSort!!</button>
+                <button class ="sortButton" id ="insertionSort" onclick="callInsertion()" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Click for InsertionSort!!</button>
+                <button class="sortButton" id ="selectionSort" onclick="callSelection()" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Click for SelectionSort!!</button>
+                <button class="sortButton" id ="quickSort" onclick="callQuick(0, document.getElementsByClassName('bar').length - 1)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Click for QuickSort!!</button>
+                <button class="sortButton" id ="mergeSort" onclick="callMerge(0, document.getElementsByClassName('bar').length - 1)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">Click for MergeSort!!</button>
             </div>
         </div>
     </div>
 
     <script src="index.js"></script>
-    <footer style="height: 30px"></footer>
 </body>
 </html>

@@ -1,9 +1,20 @@
-const bar = document.getElementsByClassName('bar');
-const barHolder = document.getElementById('bar-holder');
+let bar = document.getElementsByClassName('bar');
+let barHolder = document.getElementById('bar-holder');
+let sorting = false;
 const max = 900;
 const ratio = 800/1920;
 
 setInterval(checker, 100);
+
+function bigImg(x) {
+    if (!sorting || String(x.id) === "clearButton") {
+        x.style.transform = "scale(1.05)";
+    }
+}
+  
+function normalImg(x) {
+    x.style.transform = "scale(1)";
+}
 
 function checker() {
     if ((bar.length)/Number(window.innerWidth) > ratio) {
@@ -16,6 +27,7 @@ function clearBars() {
     while (bar[0]) {
         bar[0].parentNode.removeChild(bar[0])
     }
+    sorting = false;
 }
 
 
@@ -50,6 +62,9 @@ function getRandomFloat(max) {
 }
 
 function genRandBars() {
+    if (sorting) {
+        return;
+    }
     var num = parseInt(document.getElementById("myNumber").value);
     if (num == NaN) {
         return;
@@ -72,19 +87,27 @@ function genRandBars() {
 
 function genNumOfBars(num){
     //checks if over ratio for window
+    if (sorting) {
+        return;
+    }
     if ((bar.length + num)/Number(window.innerWidth) >= ratio) {
         return;
     }
     for (var i = 0; i < parseInt(num); i++) {
         createBar(getRandomFloat(20), "px");
     }
+    shuffleBars();
 }
 
 function genMaxNumOfBars() {
+    if (sorting) {
+        return;
+    }
     //while not over designated ratio variable
     while ((bar.length + 1)/Number(window.innerWidth) < ratio) {
         createBar(getRandomFloat(20), "px");
     }
+    shuffleBars();
 }
 
 function shuffleBars(){
@@ -101,6 +124,9 @@ function shuffleBars(){
     //     j += 1;
     // }
     // figure out how to stop call once started
+    if (sorting) {
+        return;
+    }
     let randIndex;
     for (var i = 0; i < bar.length; i++) {
         randIndex = getRandomInt(bar.length-1);
@@ -115,9 +141,17 @@ function getNum(barHeight) {
     return parseFloat(barHeight);
 }
 
+async function callBubble() {
+    if (sorting) {
+        return;
+    }
+    sorting = true;
+    await bubbleSort();
+    sorting = false;
+}
+
 //assuming length of bar is >1
 async function bubbleSort() {
-
     let swapCount = 0;
     let curNum = 0;
 
@@ -143,9 +177,17 @@ async function bubbleSort() {
     }
 
     if (swapCount > 0) {
-        bubbleSort();
+        await bubbleSort();
     }
     return;
+}
+async function callInsertion() {
+    if (sorting) {
+        return;
+    }
+    sorting = true;
+    await insertionSort();
+    sorting = false;
 }
 
 async function insertionSort(){
@@ -193,6 +235,15 @@ async function insertionSort(){
     return;
 }
 
+async function callSelection() {
+    if (sorting) {
+        return;
+    }
+    sorting = true;
+    await selectionSort();
+    sorting = false;
+}
+
 async function selectionSort() {
 
     let minIndex;
@@ -219,6 +270,16 @@ async function selectionSort() {
         await selectionSwap(i, minIndex);
     }
 }
+
+async function callQuick(left, right) {
+    if (sorting) {
+        return;
+    }
+    sorting = true;
+    await quickSort(left, right);
+    sorting = false;
+}
+
 
 async function quickSort(left, right) {
     function swap(i, j) {
@@ -269,6 +330,14 @@ async function quickSort(left, right) {
     }
 }
 
+async function callMerge(left, right) {
+    if (sorting) {
+        return;
+    }
+    sorting = true;
+    await mergeSort(left, right);
+    sorting = false;
+}
 
 async function mergeSort(left, right){
     function pseudoSwap(start1, curS2Val) {
